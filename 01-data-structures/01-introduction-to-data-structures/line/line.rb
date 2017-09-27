@@ -24,6 +24,7 @@ class Line
   end
 
   def search(person)
+
   end
 
   private

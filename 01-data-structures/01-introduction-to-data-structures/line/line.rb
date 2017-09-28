@@ -13,7 +13,7 @@ class Line
   end
 
   def leave(person)
-    members.delete(person)
+    members.delete_at(index)
   end
 
   def front
@@ -21,6 +21,8 @@ class Line
   end
 
   def middle
+    location = (members.length)/2
+    return members[location]
   end
 
   def back

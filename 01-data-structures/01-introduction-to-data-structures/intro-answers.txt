@@ -1,0 +1,42 @@
+Answer to questions related to the line data structure:
+
+1. The nature of the line data structure is one in which people (with name values) wait in a line in order.
+    There is a natural flow to that line in which each member holds a spot, however, when a person leaves that
+    spot other members of the line need to automatically fill in. Furthermore, members of the line should be
+    accessible by through their value (name) or their spot in the line (index). Because of these factors,
+    I found that storing the data in an array made the most sense.
+
+    By storing the data in an array, the developer can access the data through the index of the person, or the
+    value (or name) of the person. Because and array assigns indices based on whatever the current content
+    of the  array, the developer does not need to manually adjust or manage the positions of the people in
+    the line when someone leaves it.
+
+2. A developer could find a specific element in the array data structure through a positional search (a
+    search for a specific index) or a value search (a search for a specific value).
+
+3. This structure of an array can be used to store any type of simplistic data that requires easy ordering of
+    values and access to those values. Because of this simplistic nature, it would best be used when there isn't a
+    large pool of data that needs multiple types of access or manipulation. An example of using an array for
+    data in the real world could be the temporary line up that exists for access and processing on a website.
+
+Answers to questions related to the screen and pixel data structure:
+
+1. To create a data structure that allows for access to pixels in a specific place on a screen, I recognized
+    that there would be two aspects of data that would need to be stored and accessible; first, access to the
+    point on the screen and second, access to the pixel colors on that screen. Because these two pieces of data
+    are related to one another, and because access to one should mean that someone can have access to the other,
+    I decided to use a hash for data storage. The hash requires no specific order and allows for one value to
+    be the access point to the other value. In this case, the specific position on the screen (x and y) could
+    be the key to finding the value of the pixel at that point.
+
+    The hash in this instance allows a developer to use and store key value pairs for specific points in a
+    2-dimensional rectangular shape. The nature of this is that there is no specific order. So, a developer
+    would need to know what they are looking to find in order to access and/or manipulate data at a specific
+    point or position.
+
+2. The developer would search the hash for the correct key.
+
+3. A hash can be used for real life data storage anytime a developer wants to be able to relate two pieces of data.
+    For example, on something like a library website, a book might have an identification number (specific to the
+    library and not just a number in a list of books) which can be related to the title of the book. These two
+    pieces of data can be used to find one another using a hash. 

@@ -1,0 +1,18 @@
+1. The nature of the line data structure is one in which people (with name values) wait in a line in order.
+    There is a natural flow to that line in which each member holds a spot, however, when a person leaves that
+    spot other members of the line need to automatically fill in. Furthermore, members of the line should be
+    accessible by through their value (name) or their spot in the line (index). Because of these factors,
+    I found that storing the data in an array made the most sense.
+
+    By storing the data in an array, the developer can access the data through the index of the person, or the
+    value (or name) of the person. Because and array assigns indices based on whatever the current content
+    of the  array, the developer does not need to manually adjust or manage the positions of the people in
+    the line when someone leaves it.
+
+2. A developer could find a specific element in the array data structure through a positional search (a
+    search for a specific index) or a value search (a search for a specific value).
+
+3. This structure of an array can be used to store any type of simplistic data that requires easy ordering of
+    values and access to those values. Because of this simplistic nature, it would best be used when there isn't a
+    large pool of data that needs multiple types of access or manipulation. An example of using an array for
+    data in the real world could be the temporary line up that exists for access and processing on a website.

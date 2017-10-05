@@ -30,5 +30,4 @@ class Pixel
       color = color
     end
   end
-
 end

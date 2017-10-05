@@ -13,7 +13,8 @@ class Line
   end
 
   def leave(person)
-    members.delete_at(index)
+    person_index = index(person)
+    members.delete_at(person_index)
   end
 
   def front

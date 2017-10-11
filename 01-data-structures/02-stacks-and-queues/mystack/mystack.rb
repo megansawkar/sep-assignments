@@ -15,21 +15,12 @@ class MyStack
 
   def pop
     #return the item that is being removed
-    #return @stack.last
     #remove that item from the end(top) of the array
     name = @stack[-1]
 
     @stack.delete_at(-1)
-    self.top = name
-  #  self.top = @stack[-1]
-
-
-    #redefine the top of the stack to be the new last item in the array or nil if no items left
-#    if @stack.all? {|x| x.nil?} #array is empty
-#      self.top = nil
-#    else
-#      self.top = @stack.last #array has an item in it
-#    end
+    self.top = @stack[-1]
+    return name
   end
 
   def empty?

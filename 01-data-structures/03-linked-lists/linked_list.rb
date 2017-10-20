@@ -29,10 +29,25 @@ end
     #identify the tail by iterating through each element in the list from the head on until the 'next'
     #node = the tail. Make the node before the tail the new tail, and the next node = to nil.
     current_node = @head
-    until current_node.next == @tail
-      current_node = @tail
-      current_node.next = nil
+    while current_node.next
+      prev = current_node
+      current_node = current_node.next
     end
+
+    if prev
+      prev.next = nil
+      @tail = prev
+    else
+      @tail = nil
+      @head = nil
+    end
+
+
+    # current_node = @head
+    # until current_node.next == @tail
+    #   current_node = @tail
+    #   current_node.next = nil
+    # end
 
     # current_node = @head
     # until current_node.next == @tail
@@ -58,34 +73,28 @@ end
     #node needs to point to the next node).
 
     current_node = @head
-    if current_node = node
-      @head = current_node.next
-    else
-      until current_node.next = node
-        current_node = current_node.next
-      end
-      current_node.next = current_node.next.next
+    while current_node && current_node != node
+      prev = current_node
+      current_node = current_node.next
     end
 
-
-    # until current_node.next = node
-    #   current_node = current_node.next
-    # end
-    #current_node.next = current_node.next.next
-
-
-
+    if prev
+      if !current_node.next
+        @tail = prev
+      end
+      prev.next = current_node.next
+    else
+      @head = current_node.next
+    end
 
     # current_node = @head
-    # if current_node = node #if @head is equal to node value, set @head to the next value
-    #   current_node = current_node.next
+    # if current_node = node
+    #   @head = current_node.next
     # else
-    #   while(current_node.next!=nil)&&(current_node.next!=node)
-    #     @head = current_node.next
+    #   until current_node.next = node
+    #     current_node = current_node.next
     #   end
-    #   unless current_node.next==nil
-    #     curent_node.next = current_node.next.next
-    #   end
+    #   current_node.next = current_node.next.next
     # end
   end
 

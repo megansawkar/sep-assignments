@@ -28,32 +28,24 @@ end
   def remove_tail
     #identify the tail by iterating through each element in the list from the head on until the 'next'
     #node = the tail. Make the node before the tail the new tail, and the next node = to nil.
+
+    #iterate through each node and track the node that on and the previous node
     current_node = @head
     while current_node.next
       prev = current_node
       current_node = current_node.next
     end
 
+    #identify when the next node is nil, then set the tail to be the previous node (the node before the
+    #node that are currently on)
     if prev
       prev.next = nil
       @tail = prev
     else
+    #otherwise, if there is no previous or next, list is empty
       @tail = nil
       @head = nil
     end
-
-
-    # current_node = @head
-    # until current_node.next == @tail
-    #   current_node = @tail
-    #   current_node.next = nil
-    # end
-
-    # current_node = @head
-    # until current_node.next == @tail
-    #   current_node = current_node.next
-    # end
-    # current_node.next = nil
   end
 
   # This method prints out a representation of the list.
@@ -73,29 +65,23 @@ end
     #node needs to point to the next node).
 
     current_node = @head
+    #iterate through each node from the head moving forward as long as the current node does not equal
+    #the input node. Set the current node to a variable of previous node to track the previous node.
+    #Then set the variable of current node to the next node to keep moving forward.
     while current_node && current_node != node
       prev = current_node
       current_node = current_node.next
     end
 
-    if prev
-      if !current_node.next
-        @tail = prev
+    if prev #look at the previous node
+      if !current_node.next #if there is no next node
+        @tail = prev #delete the last node by setting the tail to the previous node
       end
-      prev.next = current_node.next
+      prev.next = current_node.next # otherwise delete the middle node by skipping the current node
+      #and setting the previous node to equal the node after the current node
     else
-      @head = current_node.next
+      @head = current_node.next #otherwise delete the head by setting the head equal to the next node
     end
-
-    # current_node = @head
-    # if current_node = node
-    #   @head = current_node.next
-    # else
-    #   until current_node.next = node
-    #     current_node = current_node.next
-    #   end
-    #   current_node.next = current_node.next.next
-    # end
   end
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.

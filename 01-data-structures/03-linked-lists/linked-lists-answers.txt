@@ -1,0 +1,27 @@
+1)  Spatial Locality refers to the method of storing data elements
+in close, but not linear proximity to one another. It benefits
+performance because it uses less memory than a linear lists might
+ - due to the fact that a linear list would require sequential
+ storage space and therefore might skip the usage of non-sequential
+ locations.
+
+ 2)
+Create_Array_10_000  0.000000   0.000000   0.000000 (  0.000483)
+Create_Linked_List_10_000  0.010000   0.000000   0.010000 (  0.006460)
+
+- 0.004 vs 0.006. It is quicker to create an array.
+
+Array_Find_5_000  0.000000   0.000000   0.000000 (  0.000005)
+Linked_List_Find_5_000  0.000000   0.000000   0.000000 (  0.000548)
+
+- 0.000005 vs 0.000548. It is much quicker to find a specific element
+in an array than it is to pass through each element in a linked list
+in order until the correct one is found.
+
+Array_Delete_5_000  0.000000   0.000000   0.000000 (  0.000017)
+Linked_List_Delete_5_000  0.000000   0.000000   0.000000 (  0.000004)
+
+- 0.000017 vs 0.000004. It appears to be faster in this test to delete
+the item in the linked list, however, overall, I know it to be faster to
+delete a specific item by index from an array than to pass through each
+element in a linked list until finding the correct element to delete.

@@ -5,6 +5,7 @@ class HashClass
   end
 
   def []=(key, value)
+    @items[key] = value
   end
 
 

@@ -1,0 +1,10 @@
+Q: Explain why doubling the size of the underlying array of your HashClass may be a poor idea.
+
+A: Doubling the size of the underlying array in a Hash every time there is a collision is not a
+    good idea because it unnecessarily increases the size of the array very quickly. Take the example from
+    the RSpec tests. You have an array of 30 slots to input and you happen to produce two ascii
+    numbers that are evenly divisible by 30 (150 and 180 for example). Both these numbers would return a modulus
+    of 0 and therefore be mapped to the same index position in the array. This would cause a collision
+    and unnecessarily double the size of the array to 60 and then 120 and so on. That would leave so many
+    empty slots in the array, unnecessarily taking up storage space. Additionally, a larger array would take
+    significantly more time to iterate through. This would lead to slower performance.

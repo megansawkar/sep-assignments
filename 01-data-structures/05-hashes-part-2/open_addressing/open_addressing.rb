@@ -6,29 +6,24 @@ class OpenAddressing
   end
 
   def []=(key, value)
+    # define the index using key and array size
     i = index(key, @items.size)
 
-    while @items[i]
-      @items[i += 1]
-      if @items[i] && @items[i].value != value
-      # if @items[i].empty? == false || @items[i].nil? == false
+    if @items[i] && @items[i].value != value
+      i = next_open_index(i)
+
+      if i == -1
         resize
+        i = index(key, @items.size)
       end
     end
 
-
-    # @items.each { |x|
-    #   if @items[i] && @items[i].value != value
-    #     resize
-    #   end
-    # }
-    #
     @items[i] = Node.new(key, value)
   end
 
   def [](key)
     i = index(key, @items.size)
-    @items[i].value
+    return @items[i].value
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -46,18 +41,11 @@ class OpenAddressing
   # Given an index, find the next open index in @items
   def next_open_index(index)
     #iterate through each item of the array
-    @items.each { |x|
-      # if index exists at that spot
-      if index
-        #increment to the next index location
-        index += 1
-        #if the next location is nil return that loctaion
-        #otherwise, return -1
-        if index.nil?
-          return index
-        else
-          return -1
-        end
+    @items.each_with_index { |x, index|
+      if x.nil?
+        return index
+      else
+        return -1
       end
     }
   end
@@ -71,7 +59,7 @@ class OpenAddressing
   def resize
     new_size = @items.size * 2
     old_ary = @items
-    new_ary = Array.new(new_size)
+    @items = Array.new(new_size)
 
     old_ary.each { |x|
       if x

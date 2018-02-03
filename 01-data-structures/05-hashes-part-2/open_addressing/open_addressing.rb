@@ -16,6 +16,7 @@ class OpenAddressing
         resize
         i = index(key, @items.size)
       end
+      p i
     end
 
     @items[i] = Node.new(key, value)
@@ -23,7 +24,7 @@ class OpenAddressing
 
   def [](key)
     i = index(key, @items.size)
-    return @items[i].value
+    @items[i].value
   end
 
   # Returns a unique, deterministically reproducible index into an array

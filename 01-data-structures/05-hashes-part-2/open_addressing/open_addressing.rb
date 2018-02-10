@@ -6,25 +6,56 @@ class OpenAddressing
   end
 
   def []=(key, value)
+    # defines data in the hash
     # define the index using key and array size
     i = index(key, @items.size)
 
+    # if an item exists and that item's value is not equal to the input value
     if @items[i] && @items[i].value != value
+      # find the next open index and return it
       i = next_open_index(i)
 
+      # if the next open index returns -1, resize the hash and set the index again according to input
       if i == -1
         resize
         i = index(key, @items.size)
       end
-      p i
     end
 
+    # input a new hash value at the index location returned 
     @items[i] = Node.new(key, value)
   end
 
   def [](key)
+    # allows to read data from the hash
+
+    # identify the index of the key
     i = index(key, @items.size)
-    @items[i].value
+    # set a stop for the while loop
+    stop = false
+    # if the index spot exists and the key does not equal key
+    while @items[i] && @items[i].key != key
+      if i == 0
+        # if i is index 0, stop the while loop
+        stop = true
+      end
+
+      # iterate up until the key = the key
+      i += 1
+
+      # if i is greater than the array size and the while loop is still going
+      if i >= @items.size && stop == false
+        # set i to 0 and stop the while loop
+        # iterate up
+        i = 0
+        stop = true
+      end
+    end
+
+    # when an item is returned from the while loop, return that item's value
+    if @items[i]
+      @items[i].value
+    end
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -41,14 +72,25 @@ class OpenAddressing
 
   # Given an index, find the next open index in @items
   def next_open_index(index)
-    #iterate through each item of the array
-    @items.each_with_index { |x, index|
-      if x.nil?
-        return index
-      else
-        return -1
+    # first check the array in order from the index point to the last item in the array.
+    # if there is no item in an index spot along the way, return that index
+    for i in index...@items.size do
+      if !@items[i]
+        return i
       end
-    }
+    end
+
+  # second, if nothing is returned, check the array from the first index spot to the
+  # input index. If an item doesn't exist in one of these index spots along the way,
+  # return that index
+    for i in 0...index do
+      if !@items[i]
+        return i
+      end
+    end
+
+  # otherwise, if no index is returned, return -1
+    -1
   end
 
   # Simple method to return the number of items in the hash

@@ -111,4 +111,23 @@ class SeparateChaining
       end
     }
    end
+
+   def state_of_hash
+     item_index = 0
+     @items.each { |x|
+       if x
+         p "Index: #{item_index}"
+         current_node = x.head
+         chain_location = 0
+         while current_node
+           p "Chain Location: #{chain_location}, Key: #{x.key}, Value: #{x.value}"
+           chain_location += 1
+           current_node = current_node.next
+         end
+       else
+         p "Index: #{item_index}, nil"
+       end
+       item_index += 1
+     }
+   end
 end

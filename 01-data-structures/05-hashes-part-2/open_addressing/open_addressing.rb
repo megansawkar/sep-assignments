@@ -22,7 +22,7 @@ class OpenAddressing
       end
     end
 
-    # input a new hash value at the index location returned 
+    # input a new hash value at the index location returned
     @items[i] = Node.new(key, value)
   end
 
@@ -107,8 +107,21 @@ class OpenAddressing
     old_ary.each { |x|
       if x
         i = index(x.key, @items.size)
+        @items[i]
         @items[i] = x
       end
+    }
+  end
+
+  def state_of_hash
+    item_index = 0
+    @items.each { |x|
+      if x
+        p "Item: #{item_index}, Key: #{x.key}, Value: #{x.value}"
+      else
+        p "Item: #{item_index}, nil"
+      end
+      item_index += 1
     }
   end
 end

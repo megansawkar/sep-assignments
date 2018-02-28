@@ -1,0 +1,16 @@
+Describe three resolution strategies:
+
+1) Coalesced Chaining: This is a hybrid of separate chaining and open addressing. Using this resolution
+strategy, one would create buckets for storage at given index locations. Inserting a new items would
+involve: 1. assigning an index 2. checking to see if there is an item at that index 3. if not, adding
+a bucket to store items to that index, followed by adding the item to the bucket... and if so, adding
+the item to the bucket. In this scenario, if a collision occurs, the item would be placed anywhere in
+that index bucket.
+
+2) Two-Way Chaining: With this resolution strategy, keys are added by hashing with two hashes. In each
+hash, there are buckets for storage at each index location. The key is then inserted in the array with
+fewer colliding keys, or fewer items in the bucket at said index location. Using this method, the first
+hash is always checked first and becomes the priority hash for inserting if both buckets have equal
+items.
+
+3)

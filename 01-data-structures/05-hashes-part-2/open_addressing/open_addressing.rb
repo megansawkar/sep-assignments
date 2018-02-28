@@ -117,9 +117,9 @@ class OpenAddressing
     item_index = 0
     @items.each { |x|
       if x
-        p "Item: #{item_index}, Key: #{x.key}, Value: #{x.value}"
+        p "Index: #{item_index}, Key: #{x.key}, Value: #{x.value}"
       else
-        p "Item: #{item_index}, nil"
+        p "Index: #{item_index}, nil"
       end
       item_index += 1
     }

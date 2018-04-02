@@ -1,16 +1,29 @@
 Describe three resolution strategies:
 
-1) Coalesced Chaining: This is a hybrid of separate chaining and open addressing. Using this resolution
-strategy, one would create buckets for storage at given index locations. Inserting a new items would
+1) Double Hashing: This is a resolution strategy designed to minimize the clusters that naturally form
+in linear probing. Double hashing simply requires running a second hash function to determine the
+offset at each collision found (based on the key value). That offset is used to find a new index spot
+or to determine the table needs to be enlarged. This method works best when the table size is a prime
+number.
+
+2) Coalesced Chaining: This is a hybrid of separate chaining and open addressing. Using this resolution
+strategy, one would create buckets for storage at given index locations. Inserting a new item would
 involve: 1. assigning an index 2. checking to see if there is an item at that index 3. if not, adding
 a bucket to store items to that index, followed by adding the item to the bucket... and if so, adding
 the item to the bucket. In this scenario, if a collision occurs, the item would be placed anywhere in
 that index bucket.
 
-2) Two-Way Chaining: With this resolution strategy, keys are added by hashing with two hashes. In each
+3) Two-Way Chaining: With this resolution strategy, keys are added by hashing with two hashes. In each
 hash, there are buckets for storage at each index location. The key is then inserted in the array with
 fewer colliding keys, or fewer items in the bucket at said index location. Using this method, the first
 hash is always checked first and becomes the priority hash for inserting if both buckets have equal
 items.
 
-3)
+Create your own resolution strategy and describe how it works:
+
+Another resolution strategy could be to use two different hashing functions to find an open index in the
+table. In this strategy, there would be an initial hash performed and index location for inserting the
+key value. If that item already existed or the index location was already full, then a second hash function
+would be run altogether. That index would be checked. If the item already existed there or that index were
+full, the hash would have to be resized. The general idea would be to utilize two methods of determining a
+hash value, with one being the priority hashing method, to find an index location. 

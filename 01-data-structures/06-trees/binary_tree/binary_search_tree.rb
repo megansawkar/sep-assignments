@@ -63,19 +63,5 @@ class BinarySearchTree
 
   private
 
-  def insert_left(node)
-    if left
-      left.insert(node)
-    else
-      self.left = Node.new(node)
-    end
-  end
 
-  def insert_right(node)
-    if right
-      right.insert(node)
-    else
-      self.right = Node.new(node)
-    end
-  end
 end
